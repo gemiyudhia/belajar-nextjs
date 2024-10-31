@@ -25,7 +25,7 @@ const AdminProductPage = () => {
   };
 
   return (
-    <div>
+    <div className="w-3/6 h-96 bg-gray-300 rounded-[12px] flex justify-center items-center">
       <h1>{status}</h1>
       <button
         onClick={revalidate}
