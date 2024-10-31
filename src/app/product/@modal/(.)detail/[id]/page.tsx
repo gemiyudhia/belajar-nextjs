@@ -21,7 +21,7 @@ const DetailProductPage = async ({ params }: DetailProductPageProps) => {
         className="w-full object-cover aspect-square col-span-2"
       />
       <div className="bg-white p-4 px-6">
-        <h2>{product.data.title}</h2>
+        <h2>{product.data.name}</h2>
         Price: $<p>{product.data.price}</p>
       </div>
     </Modal>
