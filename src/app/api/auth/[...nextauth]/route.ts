@@ -9,7 +9,7 @@ const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
 
-  secret: "gemi123",
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     CredentialsProvider({
       type: "credentials",

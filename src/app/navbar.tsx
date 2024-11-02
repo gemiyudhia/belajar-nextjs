@@ -3,11 +3,9 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const pathname = usePathname();
-  const router = useRouter();
   const { data: session, status }: { data: any, status: string } = useSession();
 
 
