@@ -1,11 +1,43 @@
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
 
 const RegisterPage = () => {
+  const { push } = useRouter();
+  const [isError, setIsError] = useState("");
+  const [isLoading, setIsloading] = useState(false);
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setIsError("");
+    setIsloading(true);
+    const res = await fetch("/api/auth/register", {
+      method: "POST",
+      body: JSON.stringify({
+        fullname: e.target.fullname.value,
+        email: e.target.email.value,
+        password: e.target.password.value,
+      }),
+    });
+    if (res.status === 200) {
+      e.target.reset();
+      setIsloading(false);
+      push("/login");
+    } else {
+      setIsError("Email already exist");
+      setIsloading(false);
+    }
+  };
+
   return (
-    <div className="h-screen w-full flex items-center justify-center">
+    <div className="h-screen w-full flex items-center justify-center flex-col">
+      {isError !== "" && (
+        <div className="text-red-600 font-bold mb-3">{isError}</div>
+      )}
       <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
-        <form className="space-y-6" action="#">
+        <form className="space-y-6" onSubmit={(e) => handleSubmit(e)}>
           <h3 className="text-xl font-medium text-gray-900 dark:text-white">
             Sign up to our platform
           </h3>
