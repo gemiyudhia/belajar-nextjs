@@ -36,7 +36,7 @@ const RegisterPage = () => {
       {isError !== "" && (
         <div className="text-red-600 font-bold mb-3">{isError}</div>
       )}
-      <div className="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
+      <div className="bg-white shadow-md border border-gray-200 rounded-lg w-96 p-4 sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700">
         <form className="space-y-6" onSubmit={(e) => handleSubmit(e)}>
           <h3 className="text-xl font-medium text-gray-900 dark:text-white">
             Sign up to our platform
@@ -91,10 +91,11 @@ const RegisterPage = () => {
           </div>
 
           <button
+            disabled={isLoading}
             type="submit"
             className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Sign up account
+            {isLoading ? "Loading..." : "Sign up account"}
           </button>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
             Have registered?{" "}

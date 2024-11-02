@@ -2,7 +2,6 @@ import {
   addDoc,
   collection,
   doc,
-  getDoc,
   getDocs,
   getFirestore,
   query,
@@ -59,5 +58,24 @@ export async function register(data: {
     } catch (error) {
       return { status: false, statusCode: 400, message: "Register failed" };
     }
+  }
+}
+
+export async function login(data: { email: string }) {
+  const q = query(
+    collection(firestore, "users"),
+    where("email", "==", data.email)
+  );
+
+  const snapshot = await getDocs(q);
+  const user = snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  if (user) {
+    return user[0];
+  } else {
+    return null;
   }
 }
