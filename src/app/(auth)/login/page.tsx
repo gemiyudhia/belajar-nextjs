@@ -10,7 +10,7 @@ const LoginPage = ({ searchParams }: any) => {
   const [isError, setIsError] = useState("");
   const [isLoading, setIsloading] = useState(false);
 
-const callbackUrl = searchParams.callbackUrl || '/';
+  const callbackUrl = searchParams.callbackUrl || "/";
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
@@ -96,6 +96,14 @@ const callbackUrl = searchParams.callbackUrl || '/';
             className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             {isLoading ? "Loading..." : "Login to your account"}
+          </button>
+          <hr />
+          <button
+            type="button"
+            onClick={() => signIn("google", { callbackUrl, redirect: false })}
+            className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Login With Google
           </button>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered?{" "}
