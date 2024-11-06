@@ -1,6 +1,6 @@
 import Modal from "@/components/core/Modal";
 import { getData } from "@/services/products";
-import React from "react";
+import Image from "next/image";
 
 type DetailProductPageProps = {
   params: {
@@ -15,10 +15,12 @@ const DetailProductPage = async ({ params }: DetailProductPageProps) => {
 
   return (
     <Modal>
-      <img
+      <Image
         src={product.data.image}
         alt=""
         className="w-full object-cover aspect-square col-span-2"
+        width={500}
+        height={500}
       />
       <div className="bg-white p-4 px-6">
         <h2>{product.data.name}</h2>
