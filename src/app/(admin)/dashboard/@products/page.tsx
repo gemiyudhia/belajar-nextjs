@@ -7,7 +7,7 @@ const AdminProductPage = () => {
 
   const revalidate = async () => {
     const res = await fetch(
-      "http://localhost:3000/api/revalidate?tag=products&secret=Gemi12345",
+      `${process.env.NEXT_PUBLIC_API_URL}/api/revalidate?tag=products&secret=Gemi12345`,
       {
         // untuk security gunakan secret token
         method: "POST",

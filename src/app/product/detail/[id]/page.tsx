@@ -10,7 +10,7 @@ type DetailProductPageProps = {
 
 const DetailProductPage = async ({ params }: DetailProductPageProps) => {
   const product = await getData(
-    `http://localhost:3000/api/product/?id=${params.id}`
+    `${process.env.NEXT_PUBLIC_API_URL}/api/product/?id=${params.id}`
   );
 
   return (
